@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة تطبيق - تطبيقات الذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">AI Apps</div>
+            <ul class="nav-menu">
+                <li><a href="home.html">الرئيسية</a></li>
+                <li><a href="AboutUs.html">من نحن</a></li>
+                <li><a href="apps.html">التطبيقات</a></li>
+                <li><a href="add_app.html" class="active">إضافة تطبيق</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">إضافة تطبيق جديد</h1>
+            <p class="hero-subtitle">أضف معلومات تطبيق الذكاء الاصطناعي الخاص بك</p>
+        </div>
+    </div>
+
+    <main class="container main-content">
+        <section class="form-section">
+            <div class="form-container">
+                <form id="addAppForm" onsubmit="return validateAndSubmit(event)">
+                    
+                    <div class="form-group">
+                        <label for="appName">اسم التطبيق *</label>
+                        <input type="text" id="appName" name="appName" placeholder="مثال: ChatGPT">
+                        <span class="error-message" id="appNameError">يجب إدخال اسم التطبيق بأحرف إنجليزية فقط بدون فراغات</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyName">الشركة المصنعة *</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="مثال: OpenAI">
+                        <span class="error-message" id="companyNameError">يجب إدخال اسم الشركة بأحرف إنجليزية فقط</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="websiteUrl">الموقع الإلكتروني *</label>
+                        <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://example.com">
+                        <span class="error-message" id="websiteUrlError">يجب إدخال رابط URL صحيح</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>مجاني أم لا *</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="isFree" value="مجاني" checked>
+                                <span>مجاني</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="isFree" value="غير مجاني">
+                                <span>غير مجاني</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="isFree" value="مجاني جزئياً">
+                                <span>مجاني جزئياً</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usageField">مجال الاستخدام *</label>
+                        <select id="usageField" name="usageField">
+                            <option value="">اختر المجال</option>
+                            <option value="التجارة الإلكترونية">E-Commerce - التجارة الإلكترونية</option>
+                            <option value="التعليم">Education - التعليم</option>
+                            <option value="الروبوتات">Robotics - الروبوتات</option>
+                            <option value="الصحة">Healthcare - الصحة</option>
+                            <option value="التمويل">Finance - التمويل</option>
+                            <option value="الترفيه">Entertainment - الترفيه</option>
+                            <option value="التصميم">Design - التصميم</option>
+                            <option value="البرمجة">Programming - البرمجة</option>
+                        </select>
+                        <span class="error-message" id="usageFieldError">يجب اختيار مجال الاستخدام</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">شرح مختصر عن التطبيق *</label>
+                        <textarea id="description" name="description" placeholder="اكتب وصفاً موجزاً عن التطبيق وميزاته..."></textarea>
+                        <span class="error-message" id="descriptionError">يجب إدخال وصف للتطبيق (على الأقل 10 أحرف)</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">إرسال</button>
+                        <button type="reset" class="btn btn-secondary">إعادة</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 موقع تطبيقات الذكاء الاصطناعي - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="myFunctions.js"></script>
+    <script>
+        function validateAndSubmit(event) {
+            event.preventDefault();
+            
+            // إزالة جميع رسائل الخطأ السابقة
+            $('.error-message').removeClass('show');
+            $('input, select, textarea').removeClass('error');
+            
+            var isValid = true;
+            
+            // التحقق من اسم التطبيق
+            var appName = $('#appName').val().trim();
+            var appNamePattern = /^[A-Za-z]+$/;
+            if (!appName || !appNamePattern.test(appName)) {
+                $('#appName').addClass('error');
+                $('#appNameError').addClass('show');
+                isValid = false;
+            }
+            
+            // التحقق من اسم الشركة
+            var companyName = $('#companyName').val().trim();
+            var companyNamePattern = /^[A-Za-z0-9\s]+$/;
+            if (!companyName || !companyNamePattern.test(companyName)) {
+                $('#companyName').addClass('error');
+                $('#companyNameError').addClass('show');
+                isValid = false;
+            }
+            
+            // التحقق من URL
+            var websiteUrl = $('#websiteUrl').val().trim();
+            var urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+            if (!websiteUrl || !urlPattern.test(websiteUrl)) {
+                $('#websiteUrl').addClass('error');
+                $('#websiteUrlError').addClass('show');
+                isValid = false;
+            }
+            
+            // التحقق من مجال الاستخدام
+            var usageField = $('#usageField').val();
+            if (!usageField) {
+                $('#usageField').addClass('error');
+                $('#usageFieldError').addClass('show');
+                isValid = false;
+            }
+            
+            // التحقق من الوصف
+            var description = $('#description').val().trim();
+            if (!description || description.length < 10) {
+                $('#description').addClass('error');
+                $('#descriptionError').addClass('show');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // الحصول على قيمة الراديو
+                var isFree = $('input[name="isFree"]:checked').val();
+                
+                // إنشاء كائن التطبيق
+                var newApp = {
+                    name: appName,
+                    company: companyName,
+                    url: websiteUrl,
+                    isFree: isFree,
+                    field: usageField,
+                    description: description
+                };
+                
+                // حفظ في localStorage
+                var apps = JSON.parse(localStorage.getItem('aiApps') || '[]');
+                apps.push(newApp);
+                localStorage.setItem('aiApps', JSON.stringify(apps));
+                
+                // عرض رسالة نجاح
+                alert('تم إضافة التطبيق بنجاح!');
+                
+                // الانتقال إلى صفحة التطبيقات
+                window.location.href = 'apps.html';
+            } else {
+                // التمرير إلى أول خطأ
+                $('html, body').animate({
+                    scrollTop: $('.error').first().offset().top - 100
+                }, 500);
+            }
+            
+            return false;
+        }
+        
+        // استخدام jQuery لإزالة رسائل الخطأ عند الكتابة
+        $(document).ready(function() {
+            $('input, select, textarea').on('input change', function() {
+                $(this).removeClass('error');
+                $(this).siblings('.error-message').removeClass('show');
+            });
+            
+            // تأثيرات jQuery على الحقول
+            $('input, select, textarea').focus(function() {
+                $(this).css('box-shadow', '0 0 20px rgba(212, 175, 55, 0.4)');
+            }).blur(function() {
+                $(this).css('box-shadow', '');
+            });
+        });
+    </script>
+</body>
+</html>

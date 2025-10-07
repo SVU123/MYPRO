@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التطبيقات - تطبيقات الذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">AI Apps</div>
+            <ul class="nav-menu">
+                <li><a href="home.html">الرئيسية</a></li>
+                <li><a href="AboutUs.html">من نحن</a></li>
+                <li><a href="apps.html" class="active">التطبيقات</a></li>
+                <li><a href="add_app.html">إضافة تطبيق</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">تطبيقات الذكاء الاصطناعي</h1>
+            <p class="hero-subtitle">اكتشف مجموعة متنوعة من تطبيقات الذكاء الاصطناعي</p>
+        </div>
+    </div>
+
+    <main class="container main-content">
+        <section class="apps-section">
+            <div class="info-card">
+                <table id="appsTable">
+                    <thead>
+                        <tr>
+                            <th>إظهار التفاصيل</th>
+                            <th>مجاني/غير مجاني</th>
+                            <th>مجال الاستخدام</th>
+                            <th>اسم الشركة المطورة</th>
+                            <th>اسم التطبيق</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appsTableBody">
+                        <tr data-app="1">
+                            <td><button class="toggle-btn" onclick="toggleDetails(1)">+</button></td>
+                            <td>مجاني جزئياً</td>
+                            <td>التعليم</td>
+                            <td>OpenAI</td>
+                            <td>ChatGPT</td>
+                        </tr>
+                        <tr id="details-1" class="details-row" style="display: none;">
+                            <td colspan="5">
+                                <div class="details-content">
+                                    <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="https://chat.openai.com" target="_blank">https://chat.openai.com</a></p>
+                                    <p><strong>شرح مختصر:</strong> نموذج لغوي متقدم للمحادثة والإجابة على الأسئلة وإنشاء المحتوى بطريقة ذكية وطبيعية</p>
+                                    <div class="app-logo">🤖</div>
+                                    <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-app="2">
+                            <td><button class="toggle-btn" onclick="toggleDetails(2)">+</button></td>
+                            <td>غير مجاني</td>
+                            <td>التجارة الإلكترونية</td>
+                            <td>Midjourney Inc</td>
+                            <td>MidJourney</td>
+                        </tr>
+                        <tr id="details-2" class="details-row" style="display: none;">
+                            <td colspan="5">
+                                <div class="details-content">
+                                    <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="https://midjourney.com" target="_blank">https://midjourney.com</a></p>
+                                    <p><strong>شرح مختصر:</strong> أداة ذكاء اصطناعي لإنشاء صور فنية عالية الجودة من النصوص، تستخدم في التصميم والإعلانات</p>
+                                    <div class="app-logo">🎨</div>
+                                    <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-app="3">
+                            <td><button class="toggle-btn" onclick="toggleDetails(3)">+</button></td>
+                            <td>مجاني</td>
+                            <td>الروبوتات</td>
+                            <td>Google</td>
+                            <td>TensorFlow</td>
+                        </tr>
+                        <tr id="details-3" class="details-row" style="display: none;">
+                            <td colspan="5">
+                                <div class="details-content">
+                                    <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="https://tensorflow.org" target="_blank">https://tensorflow.org</a></p>
+                                    <p><strong>شرح مختصر:</strong> مكتبة مفتوحة المصدر للتعلم الآلي والذكاء الاصطناعي، تستخدم في تطوير أنظمة الروبوتات الذكية</p>
+                                    <div class="app-logo">🔬</div>
+                                    <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-app="4">
+                            <td><button class="toggle-btn" onclick="toggleDetails(4)">+</button></td>
+                            <td>مجاني جزئياً</td>
+                            <td>التعليم</td>
+                            <td>Anthropic</td>
+                            <td>Claude</td>
+                        </tr>
+                        <tr id="details-4" class="details-row" style="display: none;">
+                            <td colspan="5">
+                                <div class="details-content">
+                                    <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="https://claude.ai" target="_blank">https://claude.ai</a></p>
+                                    <p><strong>شرح مختصر:</strong> مساعد ذكاء اصطناعي متقدم للمحادثة والبرمجة وتحليل المستندات بطريقة آمنة وموثوقة</p>
+                                    <div class="app-logo">🧠</div>
+                                    <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-app="5">
+                            <td><button class="toggle-btn" onclick="toggleDetails(5)">+</button></td>
+                            <td>غير مجاني</td>
+                            <td>التجارة الإلكترونية</td>
+                            <td>Adobe</td>
+                            <td>Adobe Firefly</td>
+                        </tr>
+                        <tr id="details-5" class="details-row" style="display: none;">
+                            <td colspan="5">
+                                <div class="details-content">
+                                    <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="https://firefly.adobe.com" target="_blank">https://firefly.adobe.com</a></p>
+                                    <p><strong>شرح مختصر:</strong> أداة إنشاء محتوى بصري بالذكاء الاصطناعي لتصميم الصور والرسومات للاستخدام التجاري</p>
+                                    <div class="app-logo">🔥</div>
+                                    <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-app="6">
+                            <td><button class="toggle-btn" onclick="toggleDetails(6)">+</button></td>
+                            <td>مجاني</td>
+                            <td>الروبوتات</td>
+                            <td>Meta</td>
+                            <td>PyTorch</td>
+                        </tr>
+                        <tr id="details-6" class="details-row" style="display: none;">
+                            <td colspan="5">
+                                <div class="details-content">
+                                    <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="https://pytorch.org" target="_blank">https://pytorch.org</a></p>
+                                    <p><strong>شرح مختصر:</strong> إطار عمل للتعلم العميق مفتوح المصدر يستخدم في تطوير نماذج الذكاء الاصطناعي والروبوتات</p>
+                                    <div class="app-logo">🔧</div>
+                                    <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 موقع تطبيقات الذكاء الاصطناعي - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="myFunctions.js"></script>
+    <script>
+        function toggleDetails(id) {
+            var detailsRow = $('#details-' + id);
+            var button = $('[data-app="' + id + '"]').find('.toggle-btn');
+            
+            if (detailsRow.is(':visible')) {
+                detailsRow.slideUp(300);
+                button.text('+');
+            } else {
+                detailsRow.slideDown(300);
+                button.text('-');
+            }
+        }
+
+        // تحميل التطبيقات المضافة من localStorage
+        $(document).ready(function() {
+            loadAppsFromStorage();
+        });
+
+        function loadAppsFromStorage() {
+            var apps = JSON.parse(localStorage.getItem('aiApps') || '[]');
+            
+            apps.forEach(function(app, index) {
+                var appId = 'custom-' + index;
+                var newRow = `
+                    <tr data-app="${appId}">
+                        <td><button class="toggle-btn" onclick="toggleDetails('${appId}')">+</button></td>
+                        <td>${app.isFree}</td>
+                        <td>${app.field}</td>
+                        <td>${app.company}</td>
+                        <td>${app.name}</td>
+                    </tr>
+                    <tr id="details-${appId}" class="details-row" style="display: none;">
+                        <td colspan="5">
+                            <div class="details-content">
+                                <p><strong>عنوان الموقع الإلكتروني:</strong> <a href="${app.url}" target="_blank">${app.url}</a></p>
+                                <p><strong>شرح مختصر:</strong> ${app.description}</p>
+                                <div class="app-logo">📱</div>
+                                <p style="text-align: center; color: var(--primary-orange);">صوت/فيديو توضيحي</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                $('#appsTableBody').append(newRow);
+            });
+        }
+    </script>
+</body>
+</html>
